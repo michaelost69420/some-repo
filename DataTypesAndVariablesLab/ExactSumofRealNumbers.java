@@ -1,5 +1,6 @@
 package DataTypesAndVariablesLab;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ExactSumofRealNumbers {
@@ -10,34 +11,14 @@ public class ExactSumofRealNumbers {
         byte amount = Byte.parseByte(sc.nextLine());
 
 
-        double value2;
-        double afterDecimalPoint = 0;
-        double value1;
-        long value;
-        long sum = 0;
-        double sum1 = 0;
+        BigDecimal sum = BigDecimal.ZERO;
+
         for (int i = 0; i < amount; i++) {
-            String number = sc.nextLine();
-
-            if (number.contains(".")) {
-                value2 = Double.parseDouble(number);
-                value1 = (long) value2;
-                afterDecimalPoint = value2 - value1;
-
-                sum1 += value1;
-
-            } else {
-                value = Long.parseLong(number);
-                sum += value;
-            }
-
+            BigDecimal number = sc.nextBigDecimal();
+            sum = sum.add(number);
         }
 
-        if (sum1 == 0) {
-            System.out.printf("%d", sum);
-        } else {
-            System.out.printf("%f", sum1 + afterDecimalPoint);
-        }
+        System.out.println(sum.toPlainString());
 
     }
 }
